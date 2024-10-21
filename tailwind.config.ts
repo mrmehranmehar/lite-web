@@ -25,42 +25,7 @@ function addVariableForColors({ addBase, theme }: PluginAPI) {
 }
 
 
-function addSvgPatterns({ matchUtilities, theme }: PluginAPI) {
-  const colors = theme('colors', {}) || {};
-  const colorEntries = Object.entries(colors);
 
-  matchUtilities(
-    {
-      "bg-grid": (value: string) => ({
-        backgroundImage: `url("${svgToDataUri(
-          `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="${value}" stroke-opacity="0.2"><path d="M0 0 H32" /><path d="M0 0 V32" /></svg>`
-        )}")`,
-        backgroundSize: '32px 32px',
-      }),
-      "bg-grid-small": (value: string) => ({
-        backgroundImage: `url("${svgToDataUri(
-          `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 8" width="8" height="8" fill="none" stroke="${value}" stroke-opacity="0.2"><path d="M0 0 H8" /><path d="M0 0 V8" /></svg>`
-        )}")`,
-        backgroundSize: '8px 8px',
-      }),
-      "bg-dot": (value: string) => ({
-        backgroundImage: `url("${svgToDataUri(
-          `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" fill="none"><circle fill="${value}" cx="8" cy="8" r="1.6257413380501518"></circle></svg>`
-        )}")`,
-        backgroundSize: '16px 16px',
-      }),
-    },
-    {
-      values: Object.fromEntries(
-        colorEntries.map(([key, value]) => [
-          key,
-          typeof value === 'string' ? value : 'currentColor',
-        ])
-      ),
-      type: "color",
-    }
-  );
-}
 
 const config: Config = {
   content: [
@@ -127,12 +92,8 @@ const config: Config = {
   },
   plugins: [
     addVariableForColors,
-    addSvgPatterns,
+    
   ],
 };
 
 export default config;
-
-function svgToDataUri(arg0: string) {
-  throw new Error("Function not implemented.");
-}

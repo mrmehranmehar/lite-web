@@ -4,8 +4,10 @@
 import React from 'react';
 import HeroSection from '@/components/HeroSection';
 import FeaturedCourses from '@/components/FeaturedCourses';
+
 import TestiMonialCard from '@/components/TestiMonialCard';
 import UpComingWebinars from '@/components/UpComingWebinars';
+import Instructors from '@/components/instructors';
 import WhyChooseUs from '@/components/WhyChooseUs';
 
 const HomePage = () => {
@@ -16,6 +18,7 @@ const HomePage = () => {
       <WhyChooseUs/>
       <TestiMonialCard />
       <UpComingWebinars />
+      <Instructors />
     </main>
   );
 }
